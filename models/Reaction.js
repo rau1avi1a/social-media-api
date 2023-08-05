@@ -12,15 +12,23 @@ const reactionSchema = new Schema(
             maxlength: 280,
             minlength: 1,
         },
-        username: {
-            type: String,
+        user: {
+            type: Schema.Types.ObjectId,
+            ref: 'user',
             required: true,
         },
         createdAt: {
             type: Date,
             default: Date.now,
         }
+    },
+    {
+        toJSON: {
+            getters: true,
+        },
+        id: false,
     }
+
 );
 
 module.exports = reactionSchema;

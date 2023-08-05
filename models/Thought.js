@@ -13,12 +13,19 @@ const thoughtSchema = new Schema(
             type: Date,
             default: Date.now,
         },
-        username: {
-            type: String,
-            required: true,
+        user: {
+            type: Schema.Types.ObjectId,
+            ref: 'user',
         },
         reactions: [Reaction],
+    },
+    {
+        toJSON: {
+            getters: true,
+        },
+        id: false,
     }
+
 );
 
 const Thought = model('thought', thoughtSchema);
